@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- aki e o container do site -->
+<div class="container">
+
+    <h3 class="text-center">Minhas Fotos</h3>
+
+    @Html.ActionLink("Adicionar novar imagem", "Upload", "Galeria", new { @class = "btn btn-primary" })
+
+
+    <!-- aki e a galeria do site -->
+    <div class="row mt-1">
+
+
+        @foreach (var item in ViewBag.Images)
+    {
+        string nome = "/UploadFiles/" + item;
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img style="height: 236px;width:350px" src="@nome" />
+                <div class="caption">
+                    <h6>@item</h6>
+                    <p>@ViewBag.Descricoes[item]</p>
+                    
+                </div>
+            </div>
+        </div>
+       
+}
+    </div>
+</div>

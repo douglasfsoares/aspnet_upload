@@ -1,0 +1,38 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "Upload";
+}
+
+
+@using (Html.BeginForm("Upload", "Galeria", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    <div class="form-group">
+        <label for="exampleInputFile">Arquivo</label>
+        @Html.TextBox("file" +
+                                                                                      "", "", new { type = "file" })
+        <p class="help-block">Selecione qualquer imagem.</p>
+    </div>
+    <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" class="form-control" rows="3" name="descricao">
+
+    </textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Enviar!</button>
+
+}
+
+@if (ViewBag.Success)
+{
+    <span class="label label-success">@ViewBag.Message</span>
+
+    @Html.ActionLink("Ir para galeria", "Index", "Galeria", new { @class = "btn btn-success" })
+}
+else
+{
+    <span class="label label-danger">@ViewBag.Message</span>
+}
